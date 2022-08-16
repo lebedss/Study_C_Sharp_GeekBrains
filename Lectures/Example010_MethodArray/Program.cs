@@ -7,50 +7,20 @@
 Если index < n, то перейти к шагу 2. В противном случае
 алгоритм завершил работу безуспешно.
 */
-void FillArray(int[] collection)
-{
-    int length = collection.Length;
-    int index = 0;
-    while (index < length)
-    {
-        collection[index] = new Random().Next(1, 10);
-        index++;
-    }
-}
+int[] array = { 1, 12, 31, 4, 15, 16, 17, 18 };
 
-void PrintArray(int[] collectionPrint)
-{
-    int count = collectionPrint.Length;
-    int position = 0;
-    while (position < count)
-    {
-        Console.Write(collectionPrint[position] + " ");
-        position++;
-    }
-    Console.WriteLine();
-}
+int n = array.Length;
+int find = 4;
 
-int IndexOf(int[] collection, int find)
-{
-    int count = collection.Length;
-    int position = -1;//убираем 1 элемент/-1 это значит элемент не найден!
-    for (int index = 0; index < count; index++)
-    {
-        if (collection[index] == find)
-        {
-            position = index;
-            break;
-        }
-    }
-    return position;
-}
-int searchableValue = 4;
-int arraySize = 10;
+int index = 0;
 
-int[] array = new int[arraySize];
-//тестируем массив
-FillArray(array);
-PrintArray(array);
-int pos = IndexOf(array, searchableValue);//ищем 4 меняется значение(Можно прикрутить ввод с клавиатуры)
-Console.WriteLine($"Позиция {searchableValue} {pos}");
+while (index < n)
+{
+    if (array[index] == find)
+    {
+        Console.WriteLine(index);
+        break;
+    }
+    index++;
+}
 
