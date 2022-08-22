@@ -22,7 +22,7 @@ Clear();
 
 
 //  Сделали метод ( передаём на вход строку - возвращаем массив из чисел)
-int[] array = GetArrayFromString(ReadLine());
+int[] array = GetArrayFromString(ReadLine()!);
 WriteLine($"[{String.Join(",", array)}]");
 
 int[] GetArrayFromString(string arrayString)
