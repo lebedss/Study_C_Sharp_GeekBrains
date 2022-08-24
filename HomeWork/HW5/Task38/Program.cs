@@ -7,7 +7,7 @@ using static System.Console;
 Clear();
 
 Write("Введите количество элементов в массиве: ");
-WriteLine($"Разницу между максимальным и минимальным элементом массива: {DifferenceBetweenArraysMaxAndMin(FillArrayWithRandomDoubleNumbers((int.Parse(ReadLine()!))))}");
+WriteLine($"Разница между максимальным и минимальным элементом массива: {DifferenceBetweenArraysMaxAndMin(FillArrayWithRandomDoubleNumbers((int.Parse(ReadLine()!))))}");
 
 
 double DifferenceBetweenArraysMaxAndMin(double[] array)
