@@ -54,13 +54,7 @@ string FindArrayElement(int[,] someArray, int findElement)
     string result = String.Empty;
     int elementRow = findElement / someArray.GetLength(0);
     int elementColumn = findElement % someArray.GetLength(1);
-    for (int i = 0; i < someArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < someArray.GetLength(1); j++)
-        {
-            result = (elementRow < someArray.GetLength(0) && elementColumn < someArray.GetLength(1)) ? $"{someArray[elementRow, elementColumn]}" : "Такого элемента в нашем массиве нет.";
-        }
-    }
+    result = (elementRow < someArray.GetLength(0) && elementColumn < someArray.GetLength(1)) ? $"{someArray[elementRow, elementColumn]}" : "Такого элемента в нашем массиве нет.";
     return result;
 }
 
@@ -71,13 +65,7 @@ string FindArrayElement2(int[,] someArray2, int findElement2)
     string result = String.Empty;
     int elementRow = (findElement2 - 1) % (someArray2.GetLength(0) + 1);
     int elementColumn = (findElement2 - 1) / (someArray2.GetLength(1) + 1);
-    for (int i = 0; i < someArray2.GetLength(0); i++)
-    {
-        for (int j = 0; j < someArray2.GetLength(1); j++)
-        {
-            result = (elementRow < someArray2.GetLength(0) && elementColumn < someArray2.GetLength(1)) ? $"{someArray2[elementRow, elementColumn]}" : "Такого элемента в нашем массиве нет.";
-        }
-    }
+    result = (elementRow < someArray2.GetLength(0) && elementColumn < someArray2.GetLength(1)) ? $"{someArray2[elementRow, elementColumn]}" : "Такого элемента в нашем массиве нет.";
     return result;
 }
 
