@@ -17,29 +17,8 @@ Write("Введите  целое число - N, чтобы получить п
 int[] parameters = ReadLine()!.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => int.Parse(x)).ToArray();
 int[,] matrix = GetMatrixArray(parameters[0], parameters[0]);
 PrintMatrixArray(matrix);
-// GetMinSumOfMatrixRaw(matrix);
-WriteLine($"Номер строки с наименьшей суммой элементов: {GetTheMatrixLineWithMinSum(matrix)}");
-
-
-// void GetMinSumOfMatrixRaw(int[,] anyArray)
-// {
-//     int minSum = Int32.MaxValue; //  Int32.MaxValue это константа - крайнее значение, которое может принять тип int : 2147483647
-//     int linePosition = 0;
-//     for (int i = 0; i < anyArray.GetLength(0); i++)
-//     {
-//         int sum = 0;
-//         for (int j = 0; j < anyArray.GetLength(1); j++)
-//         {
-//             sum += anyArray[i, j];
-//         }
-//         if (sum < minSum)
-//         {
-//             minSum = sum;
-//             linePosition++;
-//         }
-//     }
-//     WriteLine($"Строка с наименьшей суммой элементов: {linePosition}, а сумма элементов в этой строке: {minSum}");
-// }
+WriteLine($"Cумма каждой строки(oт 0 до N) прямоугольного двумерного массива: [{String.Join(";", PutSumOfMatrixRawsInNewArray(matrix))}]");
+Write($"Номер строки с наименьшей суммой элементов: {FindRawWithMinElementsSum(PutSumOfMatrixRawsInNewArray(matrix))}");
 
 
 int[,] GetMatrixArray(int rows, int columns)
@@ -69,32 +48,34 @@ void PrintMatrixArray(int[,] inArray)
 }
 
 
-int MatrixLineElementsSum(int[,] anyArray, int linePosition)
+int[] PutSumOfMatrixRawsInNewArray(int[,] myArray)
 {
-    int sumLine = anyArray[linePosition, 0];
-    for (int j = 1; j < anyArray.GetLength(1); j++)
+    int[] newArray = new int[myArray.GetLength(0)];
+    for (int i = 0; i < myArray.GetLength(0); i++)
     {
-        sumLine += anyArray[linePosition, j];
+        int sum = 0;
+        for (int j = 0; j < myArray.GetLength(1); j++)
+        {
+            sum += myArray[i, j];
+        }
+        newArray[i] = sum;
     }
-    return sumLine;
+    return newArray;
 }
 
 
-int GetTheMatrixLineWithMinSum(int[,] myArray)
+int FindRawWithMinElementsSum(int[] MatrixLinesSumArray)
 {
-    int minLinesum = 0;
-    int sumInline = MatrixLineElementsSum(myArray, 0);
-    for (int i = 1; i < myArray.GetLength(0); i++)
+    int min = MatrixLinesSumArray[0];
+    int position = 0;
+    for (int i = 0; i < MatrixLinesSumArray.Length; i++)
     {
-        int tempLineSum = MatrixLineElementsSum(myArray, i);
-        if (sumInline > tempLineSum)
+        if (MatrixLinesSumArray[i] < min)
         {
-            sumInline = tempLineSum;
-            minLinesum = i;
+            min = MatrixLinesSumArray[i];
+            position = i;
         }
     }
-    return minLinesum;
+    return position;
 }
-
-
 

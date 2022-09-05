@@ -57,7 +57,7 @@ void SortStringsInMatrixMinToMax(int[,] anyArray)
         {
             for (int k = 0; k < anyArray.GetLength(1) - 1; k++)
             {
-                if (anyArray[i, j] <= anyArray[i, k]) continue;
+                if (anyArray[i, j] <= anyArray[i, k]) continue; // Оператор continue осуществляет принудительный переход к следующему шагу цикла, пропуская любой код, оставшийся невыполненным.
                 {
                     int temp = anyArray[i, j];
                     anyArray[i, j] = anyArray[i, k];
